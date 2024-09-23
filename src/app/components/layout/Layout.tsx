@@ -5,10 +5,8 @@ import Context from "@/context";
 import { setUserDetails } from "@/redux/userSlice";
 import axios from "axios";
 import { useEffect, useState } from "react";
-// import { SessionProvider } from "next-auth/react";
-import { Provider, useDispatch } from "react-redux";
-// import { PersistGate } from "redux-persist/integration/react";
-// import MainLoader from "../MainLoader";
+import { useDispatch } from "react-redux";
+
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
     const dispatch = useDispatch()
@@ -45,12 +43,9 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       fetchUserAddToCart();
     }, [])
     return (
-        // <SessionProvider>
         <Context.Provider value={{ fetchUserAddToCart, productQuantityInCart, fetchUserDetails }}>
             {children}
         </Context.Provider>
-        //     </PersistGate>
-        // </SessionProvider>
     );
 };
 

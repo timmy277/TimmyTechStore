@@ -7,7 +7,7 @@ import axios from 'axios';
 import ApiCenter from '@/api/ApiCenter';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/navigation';
-import { Button, Input } from 'antd';
+import { Button, Input, notification } from 'antd';
 
 
 interface User {
@@ -31,11 +31,11 @@ export default function SignUp() {
         email: Yup.string().email('Invalid email').required('Email is required'),
         password: Yup.string().min(6, 'Password must be at least 6 characters').required('password is required'),
         confirmpassword: Yup.string()
-        .required('Confirm Password is required')
-        .min(6, 'Password must be at least 6 characters')
-        // .matches(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/, 
-        // 'Password must contain number, uppercase letter and special character')
-        .oneOf([Yup.ref('password')], 'Passwords do not match')
+            .required('Confirm Password is required')
+            .min(6, 'Password must be at least 6 characters')
+            // .matches(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/, 
+            // 'Password must contain number, uppercase letter and special character')
+            .oneOf([Yup.ref('password')], 'Passwords do not match')
     });
 
     const handleSignUp = async (values: User, formikHelpers: FormikHelpers<User>) => {
@@ -52,10 +52,16 @@ export default function SignUp() {
 
         const dataApi = await dataResponse.data;
         if (dataApi.success) {
-            toast.success(dataApi.message);
+            notification.success({
+                message: 'Success',
+                description: dataApi.message,
+            });
             router.push('/auth/SignIn');
         } else if (dataApi.error) {
-            toast.error(dataApi.message);
+            notification.error({
+                message: 'Error',
+                description: 'An error occurred while signing in. Please try again.',
+            });
         }
     }
 
@@ -74,7 +80,7 @@ export default function SignUp() {
                                     Sign Up
                                 </h1>
 
-                                
+
                                 <div className="mb-4">
                                     <label htmlFor="name">Name</label>
                                     <Field name="name">

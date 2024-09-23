@@ -1,9 +1,10 @@
 import ApiCenter from "@/api/ApiCenter"
+import { notification } from "antd"
 import axios from "axios"
 import { MouseEvent } from "react"
 import { toast } from 'react-toastify'
 
-const addToCart = async(e: MouseEvent<HTMLButtonElement>, id: string) =>{
+const addToCart = async (e: MouseEvent<HTMLButtonElement>, id: string) => {
     e?.stopPropagation()
     e?.preventDefault()
 
@@ -14,17 +15,23 @@ const addToCart = async(e: MouseEvent<HTMLButtonElement>, id: string) =>{
         headers: {
             'content-type': 'application/json',
         },
-        data: { productId : id },
+        data: { productId: id },
     });
 
     const dataResponse = await response.data;
 
-    if(dataResponse.success){
-        toast.success(dataResponse.message)
+    if (dataResponse.success) {
+        notification.success({
+            message: 'Success',
+            description: dataResponse.message,
+        });
     }
 
-    if(dataResponse.error){
-        toast.error(dataResponse.message)
+    if (dataResponse.error) {
+        notification.error({
+            message: 'Error',
+            description: dataResponse.message,
+        });
     }
 
     return dataResponse

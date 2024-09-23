@@ -16,7 +16,7 @@ interface Product {
     price: number;
 }
 
-interface HorizontalCardProductProps {
+interface CardProductProps {
     category: string;
     heading: string;
 }
@@ -25,7 +25,7 @@ interface HorizontalCardProductProps {
 //     fetchUserAddToCart: () => void;
 // }
 
-const HorizontalCardProduct = ({ category, heading }: HorizontalCardProductProps) => {
+const CardProduct = ({ category, heading }: CardProductProps) => {
     const [data, setData] = useState<Product[]>([])
     const [loading, setLoading] = useState(true)
     const loadingList = new Array(13).fill(null)
@@ -54,7 +54,7 @@ const HorizontalCardProduct = ({ category, heading }: HorizontalCardProductProps
 
             <h2 className='py-4 text-2xl font-semibold'>{heading}</h2>
 
-            <div className='flex items-center gap-4 overflow-scroll transition-all md:gap-6 scrollbar-none' >
+            <div className='flex items-center gap-4 overflow-hidden transition-all md:gap-6' >
                 {loading ?
                     (
                         loadingList.map((product, index) => {
@@ -102,4 +102,4 @@ const HorizontalCardProduct = ({ category, heading }: HorizontalCardProductProps
     )
 }
 
-export default HorizontalCardProduct
+export default CardProduct

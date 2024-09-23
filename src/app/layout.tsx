@@ -3,9 +3,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { ToastContainer } from "react-toastify";
 import Layout from "./components/layout/Layout";
-import Header from "./components/header/Header";
 import { Provider } from "react-redux";
 import { store } from "@/redux/store";
+import Header from "./components/header/page";
 
 // export const metadata: Metadata = {
 //   title: "Timmy Tech Store",

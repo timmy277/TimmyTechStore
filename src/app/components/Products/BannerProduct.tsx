@@ -40,7 +40,7 @@ const BannerProduct = () => {
                         <Carousel autoplay>
                             {mobileImages.map((imageURL, index) => (
                                 <div key={index} className="relative w-full h-[300px]">
-                                    <Image src={imageURL} layout="fill" className='rounded-lg' alt={`bannerImg-${index}`} />
+                                    <Image src={imageURL} layout="fill" className='rounded-lg max-w-full' alt={`bannerImg-${index}`} />
                                 </div>
                             ))}
                         </Carousel>

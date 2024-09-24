@@ -9,6 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/css": "^11.13.0",
+    "@emotion/react": "^11.13.3",
+    "@emotion/server": "^11.11.0",
+    "@emotion/styled": "^11.13.0",
     "@hookform/resolvers": "^3.9.0",
     "@reduxjs/toolkit": "^2.2.7",
     "@stripe/stripe-js": "^4.5.0",
@@ -17,7 +21,7 @@
     "axios": "^1.7.7",
     "formik": "^2.4.6",
     "moment": "^2.30.1",
-    "next": "14.2.12",
+    "next": "^14.2.13",
     "react": "^18",
     "react-dom": "^18",
     "react-hook-form": "^7.53.0",
@@ -32,16 +36,21 @@
     "yup": "^1.4.0"
   },
   "devDependencies": {
+    "@babel/plugin-syntax-typescript": "^7.25.4",
+    "@emotion/babel-plugin": "^11.12.0",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "@types/react-slick": "^0.23.13",
     "@types/styled-components": "^5.1.34",
+    "babel-loader": "^9.2.1",
+    "babel-plugin-macros": "^3.1.0",
     "babel-plugin-styled-components": "^2.1.4",
     "eslint": "^8",
     "eslint-config-next": "14.2.12",
     "postcss": "^8",
-    "tailwindcss": "^3.4.1",
+    "tailwindcss": "^3.4.13",
+    "twin.macro": "^3.4.1",
     "typescript": "^5"
   }
 }

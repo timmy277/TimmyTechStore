@@ -125,7 +125,8 @@ const Cart = () => {
     }
     const handlePayment = async () => {
 
-        const stripePromise = await loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY!);
+        const stripePromise = await loadStripe("pk_test_51Q2D9fKbLYXwDhwSJeTGxQ9zbnIury2NgKVlBcWC2sZN7vWNDFrLcWm4bW7gSxsoaYRufpS13b9RKqHBkWHDNsYY00GR0Vc15J")
+        // console.log(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY, "pb key")
         const response = await fetch(ApiCenter.payment.url, {
             method: ApiCenter.payment.method,
             credentials: 'include',

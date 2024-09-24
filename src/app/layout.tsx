@@ -1,11 +1,11 @@
 "use client"
 import type { Metadata } from "next";
 import "./globals.css";
-import { ToastContainer } from "react-toastify";
 import Layout from "./components/layout/Layout";
 import { Provider } from "react-redux";
 import { store } from "@/redux/store";
 import Header from "./components/header/page";
+import Footer from "./components/footer/Footer";
 
 // export const metadata: Metadata = {
 //   title: "Timmy Tech Store",
@@ -17,13 +17,15 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en">
       <body>
+
         <Provider store={store}>
           <Layout>
-            {/* <ToastContainer /> */}
             <Header />
             {children}
+            <Footer />
           </Layout>
         </Provider>
+
       </body>
     </html>
   );

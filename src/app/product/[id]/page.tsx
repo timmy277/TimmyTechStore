@@ -103,7 +103,7 @@ const ProductDetail = ({ params }: ProductDetailProps) => {
     }
 
     return (
-        <div className='container p-4 mx-auto'>
+        <div className='container p-4 mx-auto mt-8'>
 
             <div className='min-h-[200px] flex flex-col lg:flex-row gap-4'>
                 {/***product Image */}

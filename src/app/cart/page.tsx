@@ -6,6 +6,7 @@ import Context from '@/context';
 import ApiCenter from '@/api/ApiCenter';
 import Image from 'next/image';
 import displayCurrency from '@/helper/displayCurrency';
+import {loadStripe} from '@stripe/stripe-js';
 
 interface Product {
     _id: string;
@@ -122,6 +123,27 @@ const Cart = () => {
             context?.fetchUserAddToCart()
         }
     }
+    const handlePayment = async () => {
+
+        const stripePromise = await loadStripe("pk_test_51Q2D9fKbLYXwDhwSJeTGxQ9zbnIury2NgKVlBcWC2sZN7vWNDFrLcWm4bW7gSxsoaYRufpS13b9RKqHBkWHDNsYY00GR0Vc15J")
+        const response = await fetch(ApiCenter.payment.url, {
+            method: ApiCenter.payment.method,
+            credentials: 'include',
+            headers: {
+                "content-type": 'application/json'
+            },
+            body: JSON.stringify({
+                cartItems: data
+            })
+        })
+
+        const responseData = await response.json()
+        console.log("payment response", responseData)
+
+        if (responseData?.id && stripePromise) {
+            stripePromise.redirectToCheckout({ sessionId: responseData.id })
+        }
+    }
 
     const totalQty = data.reduce((previousValue, currentValue) => previousValue + currentValue.quantity, 0)
     const totalPrice = data.reduce((preve, curr) => preve + (curr.quantity * curr?.productId?.sellingPrice), 0)
@@ -181,31 +203,35 @@ const Cart = () => {
                 </div>
 
 
-                <div className='w-full max-w-sm mt-5 lg:mt-0'>
-                    {
-                        loading ? (
-                            <div className='border h-36 bg-slate-200 border-slate-300 animate-pulse'>
+                {
+                    data[0] && (
+                        <div className='w-full max-w-sm mt-5 lg:mt-0'>
+                            {
+                                loading ? (
+                                    <div className='border h-36 bg-slate-200 border-slate-300 animate-pulse'>
 
-                            </div>
-                        ) : (
-                            <div className='bg-white h-36'>
-                                <h2 className='px-4 py-1 text-white bg-red-600'>Summary</h2>
-                                <div className='flex items-center justify-between gap-2 px-4 text-lg font-medium text-slate-600'>
-                                    <p>Quantity</p>
-                                    <p>{totalQty}</p>
-                                </div>
+                                    </div>
+                                ) : (
+                                    <div className='bg-white h-36'>
+                                        <h2 className='px-4 py-1 text-white bg-red-600'>Summary</h2>
+                                        <div className='flex items-center justify-between gap-2 px-4 text-lg font-medium text-slate-600'>
+                                            <p>Quantity</p>
+                                            <p>{totalQty}</p>
+                                        </div>
 
-                                <div className='flex items-center justify-between gap-2 px-4 text-lg font-medium text-slate-600'>
-                                    <p>Total Price</p>
-                                    <p>{displayCurrency(totalPrice)}</p>
-                                </div>
+                                        <div className='flex items-center justify-between gap-2 px-4 text-lg font-medium text-slate-600'>
+                                            <p>Total Price</p>
+                                            <p>{displayCurrency(totalPrice)}</p>
+                                        </div>
 
-                                <button className='w-full p-2 mt-2 text-white bg-blue-600'>Payment</button>
+                                        <button className='w-full p-2 mt-2 text-white bg-blue-600' onClick={handlePayment}>Payment</button>
 
-                            </div>
-                        )
-                    }
-                </div>
+                                    </div>
+                                )
+                            }
+                        </div>
+                    )
+                }
             </div>
         </div>
     )

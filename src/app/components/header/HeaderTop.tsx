@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Logo from "../../../assets/logo.png";
 import Image from "next/image";
-import { FaRegHeart, FaShoppingCart } from "react-icons/fa";
+import {FaShoppingCart } from "react-icons/fa";
 import { IoMdSearch } from "react-icons/io";
 import { useContext } from "react";
 import axios from "axios";
@@ -16,7 +16,7 @@ import { setUserDetails } from "@/redux/userSlice";
 import { AppDispatch, RootState } from "@/redux/store";
 import { UserOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
-import { Dropdown, message, Space, Tooltip } from 'antd';
+import { Dropdown, Space } from 'antd';
 import { BsPersonVcard } from "react-icons/bs";
 import { LuShoppingBasket } from "react-icons/lu";
 import { AiOutlineLogin, AiOutlineLogout } from "react-icons/ai";
@@ -67,9 +67,9 @@ const HeaderTop = () => {
       icon: <LuShoppingBasket />,
     },
     {
-      label: 'Wishlist',
+      label: <Link href="/success" className="text-left">Order</Link>,
       key: '3',
-      icon: <FaRegHeart />,
+      icon: <LuShoppingBasket />,
       danger: true,
     },
     {
@@ -109,7 +109,7 @@ const HeaderTop = () => {
                 <button className="flex items-center gap-3 px-4 py-2 text-white transition-all duration-200 rounded-2xl bg-gradient-to-r from-primary to-secondary group"
                 >
                   <Link href={"/cart"} className="relative text-2xl flex items-center justify-center">
-                    <span className="hidden mr-3 duration-200 transition-all group-hover:block text-lg">Order</span>
+                    <span className="hidden mr-3 duration-200 transition-all group-hover:block text-sm">Cart</span>
                     <span className="cursor-pointer text-white"><FaShoppingCart /></span>
                     <div className="absolute flex items-center justify-center w-5 h-5 p-1 text-white bg-red-500 rounded-full -top-2 -right-3 ">
                       <p className="text-sm">{context?.productQuantityInCart}</p>

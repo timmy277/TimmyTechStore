@@ -11,10 +11,12 @@
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
     "@reduxjs/toolkit": "^2.2.7",
+    "@stripe/stripe-js": "^4.5.0",
     "@types/react-toastify": "^4.0.2",
     "antd": "^5.20.6",
     "axios": "^1.7.7",
     "formik": "^2.4.6",
+    "moment": "^2.30.1",
     "next": "14.2.12",
     "react": "^18",
     "react-dom": "^18",

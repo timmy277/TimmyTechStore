@@ -14,7 +14,7 @@ export default function Home() {
         <BannerProduct />
         <CardProduct category={"Mouse"} heading={"New Arrivals"} />
         <CardProduct category={"airpods"} heading={"New Airpods"} />
-        <SideDrawer />
+        {/* <SideDrawer /> */}
       </main>
     </div>
   );

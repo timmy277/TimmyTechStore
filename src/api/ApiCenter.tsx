@@ -1,5 +1,4 @@
-const backendDomain = "http://localhost:8080";
-
+const backendDomain = process.env.NEXT_PUBLIC_BACK_END_URL
 const ApiCenter = {
     signUp: {
         url: `${backendDomain}/api/signup`,

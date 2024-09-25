@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Logo from "../../../assets/logo.png";
 import Image from "next/image";
-import {FaShoppingCart } from "react-icons/fa";
+import { FaShoppingCart } from "react-icons/fa";
 import { IoMdSearch } from "react-icons/io";
 import { useContext } from "react";
 import axios from "axios";
@@ -20,6 +20,7 @@ import { Dropdown, Space } from 'antd';
 import { BsPersonVcard } from "react-icons/bs";
 import { LuShoppingBasket } from "react-icons/lu";
 import { AiOutlineLogin, AiOutlineLogout } from "react-icons/ai";
+import SideDrawer from "../Drawer/Drawer";
 
 const HeaderTop = () => {
 
@@ -67,7 +68,7 @@ const HeaderTop = () => {
       icon: <LuShoppingBasket />,
     },
     {
-      label: <Link href="/success" className="text-left">Order</Link>,
+      label: <Link href="/AllOrder" className="text-left">Order</Link>,
       key: '3',
       icon: <LuShoppingBasket />,
       danger: true,
@@ -89,16 +90,19 @@ const HeaderTop = () => {
   };
 
   return (
-    <div className="max-w-full z-10 top-0 h-16 bg-primary/40 shadow-md px-8">
-      <div className="container flex items-center h-full px-4 mx-auto">
+    <div className="max-w-full z-10 top-0 h-16 bg-primary/40 shadow-md md:px-8">
+      <div className="max-w-full flex items-center h-full mx-auto md:px-4 md:flex-row xs:px-3">
+        <div className="md:hidden mr-auto mt-1 xs:ml-2">
+          <SideDrawer />
+        </div>
         <Link href={"/"} className="flex items-center flex-row justify-between" >
           <div className="">
             <Image src={Logo} alt="logo" className="w-12" />
           </div>
-          <h1 className="text-xl font-semibold text-amber-600 hover:text-amber-800">TimmyTechStore</h1>
+          <h4 className="font-semibold text-amber-600 hover:text-amber-800">TimmyTechStore</h4>
         </Link>
         <div className="flex items-center justify-between ml-auto gap-10">
-          <div className="relative group items-center justify-center gap-4">
+          <div className="relative group items-center justify-center gap-4 xs:hidden md:flex">
             <input type="text" name="search" id="search" placeholder="Search..." className="max-w-full sm:w-[200px] group-hover:w-[500px] transition-all duration-300 rounded-lg border border-gray-300 px-2 py-1 focus:outline-none focus:border-1 focus:border-primary dark:border-gray-500 dark:bg-gray-800"
             />
             <IoMdSearch className="absolute text-gray-500 -translate-y-1/2 group-hover:text-primary top-1/2 right-3" />

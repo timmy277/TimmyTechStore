@@ -49,7 +49,7 @@ const CardProduct = ({ category, heading }: CardProductProps) => {
 
 
     return (
-        <div className='container px-4 mx-auto my-6'>
+        <div className='max-w-full px-4 mx-auto my-6'>
             <h2 className='py-4 text-2xl font-semibold'>{heading}</h2>
             <div className=' grid grid-cols-1 gap-10 my-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 place-items-center place-content-center overflow-hidden transition-all md:gap-6' >
                 {loading ?
@@ -91,10 +91,10 @@ const CardProduct = ({ category, heading }: CardProductProps) => {
                                     </div>
 
                                     <div className='grid p-4'>
-                                        <h2 className='text-base font-medium text-blue-950 md:text-lg text-ellipsis line-clamp-1'>{product?.productName}</h2>
-                                        <p className='capitalize text-slate-500'>{product?.category}</p>
+                                        <h2 className='text-base text-center font-medium text-blue-950 md:text-lg text-ellipsis line-clamp-1'>{product?.productName}</h2>
+                                        <p className='capitalize text-slate-500 text-center'>{product?.category}</p>
                                         <div className='flex gap-3'>
-                                            <p className='font-medium text-red-600'>{displayCurrency(product?.sellingPrice)}</p>
+                                            <p className='font-semibold text-red-600'>{displayCurrency(product?.sellingPrice)}</p>
                                             <p className='line-through text-slate-500'>{displayCurrency(product?.price)}</p>
                                         </div>
                                     </div>

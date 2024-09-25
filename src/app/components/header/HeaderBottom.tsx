@@ -1,5 +1,4 @@
 import Link from "next/link";
-import styled from "styled-components";
 
 
 export default function HeaderBottom() {
@@ -13,7 +12,7 @@ export default function HeaderBottom() {
     ];
     return (
         <>
-            <nav>
+            <nav className="md:block xs:hidden">
                 <ul className="flex space-x-4 justify-center items-center bg-white mx-auto h-7 shadow-xl max-w-full ">
                     {ListNav.map((item, index) => (
                         <li key={index}>

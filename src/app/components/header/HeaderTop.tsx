@@ -24,7 +24,8 @@ import SideDrawer from "../Drawer/Drawer";
 
 const HeaderTop = () => {
 
-  const user = useSelector((state: RootState) => state?.user?.user?.data)
+  const user = useSelector((state: RootState) => state?.user?.user)
+
   const dispatch = useDispatch<AppDispatch>();
 
   // const [displayMenu, setDisplayMenu] = useState(false);
@@ -74,13 +75,13 @@ const HeaderTop = () => {
       danger: true,
     },
     {
-      label: user?._id ? (
+      label: user ? (
         <button onClick={handleLogOut} className="text-left">Log Out</button>
       ) : (
         <Link href="/auth/SignIn" className="text-left">Sign In</Link>
       ),
       key: '4',
-      icon: user?._id ? <AiOutlineLogout /> : <AiOutlineLogin />,
+      icon: user ? <AiOutlineLogout /> : <AiOutlineLogin />,
     },
   ];
 
@@ -109,7 +110,7 @@ const HeaderTop = () => {
           </div>
           <div>
             {
-              user?._id && (
+              user && (
                 <button className="flex items-center gap-3 px-4 py-2 text-white transition-all duration-200 rounded-2xl bg-gradient-to-r from-primary to-secondary group"
                 >
                   <Link href={"/cart"} className="relative text-xl flex items-center justify-center">

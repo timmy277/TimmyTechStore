@@ -4,11 +4,11 @@ import Link from "next/link";
 export default function HeaderBottom() {
     const ListNav = [
         { name: 'Home', path: '/' },
-        { name: 'About', path: '/about' },
-        { name: 'Service', path: '/service' },
-        { name: 'Gallery', path: '/gallery' },
-        { name: 'Blog', path: '/blog' },
-        { name: 'Contact', path: '/contact' },
+        { name: 'About', path: '/' },
+        { name: 'Service', path: '/' },
+        { name: 'Gallery', path: '/' },
+        { name: 'Blog', path: '/' },
+        { name: 'Contact', path: '/' },
     ];
     return (
         <>

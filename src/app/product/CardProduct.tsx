@@ -36,7 +36,6 @@ const CardProduct = ({ category, heading }: CardProductProps) => {
         context?.fetchUserAddToCart()
     }
 
-
     const fetchData = async () => {
         setLoading(true)
         const categoryProduct = await fetchCategoryWiseProduct(category)

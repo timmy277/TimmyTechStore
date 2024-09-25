@@ -17,7 +17,10 @@ interface User {
 
 export default function SignIn() {
     const router = useRouter();
-    const { fetchUserDetails, fetchUserAddToCart } = useContext(Context);
+    // const { fetchUserDetails, fetchUserAddToCart } = useContext(Context);
+    const context = useContext(Context); // Check if context is null
+    const fetchUserDetails = context?.fetchUserDetails;
+    const fetchUserAddToCart = context?.fetchUserAddToCart;
 
     const validationSchema = Yup.object().shape({
         email: Yup.string().email('Invalid email').required('Email is required'),
@@ -44,8 +47,12 @@ export default function SignIn() {
                     description: dataApi.message,
                 });
                 router.push('/');
-                fetchUserDetails();
-                fetchUserAddToCart();
+                if (fetchUserDetails) {
+                    fetchUserDetails();
+                }
+                if (fetchUserAddToCart) {
+                    fetchUserAddToCart();
+                }
             } else if (dataApi.error) {
                 notification.error({
                     message: 'Error',

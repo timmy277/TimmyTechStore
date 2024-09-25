@@ -6,6 +6,7 @@ import displayCurrency from '@/helper/displayCurrency';
 import addToCart from '@/helper/addToCart';
 import fetchCategoryWiseProduct from '@/helper/fetchCategoryWiseProduct';
 import { FaCartPlus, FaEye, FaHeart } from 'react-icons/fa';
+import Image from 'next/image';
 interface Product {
     _id: string;
     productName: string;
@@ -76,8 +77,8 @@ const CardProduct = ({ category, heading }: CardProductProps) => {
                         data.map((product) => {
                             return (
                                 <div className='w-full max-w-[280px] max-h-[350px] bg-white rounded-sm shadow flex flex-col items-center justify-center group relative' key={product?._id} >
-                                    <div className=' h-full p-4 min-w-[120px] md:min-w-[145px] max-w-[200px]'>
-                                        <img src={product.productImage[0]} className='h-[220px] w-[150px] object-scale-down transition-all group-hover:scale-125' alt='productImg' />
+                                    <div className=' h-[200px] p-4 min-w-[120px] md:min-w-[145px] max-w-[200px]'>
+                                        <Image width={150} height={200} src={product.productImage[0]} className='h-[200px] w-[150px] object-scale-down transition-all group-hover:scale-125' alt='productImg' />
                                     </div>
 
                                     <div className="absolute top-0 right-0 opacity-0 flex flex-col items-center gap-3 transform translate-x-full translate-y-[-50%] group-hover:opacity-80 group-hover:-translate-x-3 group-hover:translate-y-3 transition-all duration-500">

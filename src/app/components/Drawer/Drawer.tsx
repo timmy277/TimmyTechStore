@@ -5,7 +5,6 @@ import { FaAddressBook, FaAddressCard, FaBars, FaBlogger, FaHome } from 'react-i
 import { RiGalleryFill } from "react-icons/ri";
 import Link from 'next/link';
 import { IoIosContacts, IoMdSearch } from 'react-icons/io';
-import Image from 'next/image';
 
 export default function SideDrawer() {
   const [open, setOpen] = React.useState<boolean>(false);

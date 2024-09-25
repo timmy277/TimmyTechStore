@@ -6,6 +6,7 @@ import { useEffect, useState } from "react"
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Slider from "react-slick";
+import Image from "next/image";
 interface Product {
     category: string;
     productImage: string[];
@@ -91,7 +92,7 @@ const CategoryList = () => {
                                         (
                                             <Link href={"/product-category?category=" + product?.category} className='cursor-pointer flex justify-center items-center' key={product?.category}>
                                                 <div className='flex items-center justify-center w-16 h-16 p-4 overflow-hidden rounded-full md:w-20 md:h-20 bg-slate-200'>
-                                                    <img width={100} height={100} src={product?.productImage[0]} alt={product?.category} className='object-scale-down h-full transition-all mix-blend-multiply hover:scale-125 mx-auto' />
+                                                    <Image width={100} height={100} src={product?.productImage[0]} alt={product?.category} className='object-scale-down h-full transition-all mix-blend-multiply hover:scale-125 mx-auto' />
                                                 </div>
                                                 <p className='text-sm text-center capitalize md:text-base -ml-16'>{product?.category}</p>
                                             </Link>

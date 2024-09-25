@@ -5,6 +5,7 @@ import moment from 'moment'
 import axios from 'axios'
 import ApiCenter from '@/api/ApiCenter'
 import displayCurrency from '@/helper/displayCurrency'
+import Image from 'next/image'
 
 
 interface ProductDetails {
@@ -75,7 +76,7 @@ const OrderPage = () => {
                                 item?.productDetails.map((product,index)=>{
                                   return(
                                     <div key={product.productId+index} className='flex gap-3 bg-slate-100'>
-                                        <img 
+                                        <Image 
                                         alt='product'
                                           src={product.image[0]}
                                           className='object-scale-down p-2 w-28 h-28 bg-slate-200'
@@ -101,7 +102,7 @@ const OrderPage = () => {
                               <div>
                                 <div className='text-lg font-medium'>Shipping Details :</div>
                                 {
-                                  item.shipping_options.map((shipping,index)=>{
+                                  item.shipping_options.map((shipping)=>{
                                     return(
                                       <div key={shipping.shipping_rate} className='ml-1 '>
                                         Shipping Amount : {shipping.shipping_amount}

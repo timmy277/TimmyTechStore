@@ -4,11 +4,12 @@ import { MouseEvent, useCallback, useContext, useEffect, useState } from 'react'
 import { FaStar } from "react-icons/fa";
 import { FaStarHalf } from "react-icons/fa";
 import axios from 'axios';
-import { useParams, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import Context from '@/context';
 import ApiCenter from '@/api/ApiCenter';
 import addToCart from '@/helper/addToCart';
 import displayCurrency from '@/helper/displayCurrency';
+import Image from 'next/image';
 
 interface ProductDetailProps {
     params: { id: string };
@@ -27,7 +28,7 @@ const ProductDetail = ({ params }: ProductDetailProps) => {
         sellingPrice: 0
     })
     // const params = useParams()
-    const { id } = params;
+    // const { id } = params;
     const [loading, setLoading] = useState(true)
     const productImageListLoading = new Array(4).fill(null)
     const [activeImage, setActiveImage] = useState("")
@@ -110,7 +111,7 @@ const ProductDetail = ({ params }: ProductDetailProps) => {
                 <div className='flex flex-col gap-4 h-96 lg:flex-row-reverse'>
 
                     <div className='h-[300px] w-[300px] lg:h-96 lg:w-96 bg-slate-200 relative p-2'>
-                        <img src={activeImage} className='object-scale-down w-full h-full mix-blend-multiply' onMouseMove={handleZoomImage} onMouseLeave={handleLeaveImageZoom} alt='img' />
+                        <Image src={activeImage} className='object-scale-down w-full h-full mix-blend-multiply' onMouseMove={handleZoomImage} onMouseLeave={handleLeaveImageZoom} alt='img' />
 
                         {/**product zoom */}
                         {
@@ -153,7 +154,7 @@ const ProductDetail = ({ params }: ProductDetailProps) => {
                                         data?.productImage?.map((imgURL, index) => {
                                             return (
                                                 <div className='w-20 h-20 p-1 rounded bg-slate-200' key={imgURL}>
-                                                    <img alt='productImg' src={imgURL} className='object-scale-down w-full h-full cursor-pointer mix-blend-multiply' onMouseEnter={() => handleMouseEnterProduct(imgURL)} onClick={() => handleMouseEnterProduct(imgURL)} />
+                                                    <Image alt='productImg' src={imgURL} className='object-scale-down w-full h-full cursor-pointer mix-blend-multiply' onMouseEnter={() => handleMouseEnterProduct(imgURL)} onClick={() => handleMouseEnterProduct(imgURL)} />
                                                 </div>
                                             )
                                         })

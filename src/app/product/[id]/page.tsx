@@ -151,7 +151,7 @@ const ProductDetail = ({ params }: ProductDetailProps) => {
                             ) : (
                                 <div className='flex h-full gap-2 overflow-scroll lg:flex-col scrollbar-none'>
                                     {
-                                        data?.productImage?.map((imgURL, index) => {
+                                        data?.productImage?.map((imgURL) => {
                                             return (
                                                 <div className='w-20 h-20 p-1 rounded bg-slate-200' key={imgURL}>
                                                     <Image alt='productImg' src={imgURL} className='object-scale-down w-full h-full cursor-pointer mix-blend-multiply' onMouseEnter={() => handleMouseEnterProduct(imgURL)} onClick={() => handleMouseEnterProduct(imgURL)} />

@@ -77,6 +77,8 @@ const OrderPage = () => {
                                   return(
                                     <div key={product.productId+index} className='flex gap-3 bg-slate-100'>
                                         <Image 
+                                        width={200}
+                                        height={200}
                                         alt='product'
                                           src={product.image[0]}
                                           className='object-scale-down p-2 w-28 h-28 bg-slate-200'

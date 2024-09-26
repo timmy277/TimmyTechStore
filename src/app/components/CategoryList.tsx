@@ -80,10 +80,14 @@ const CategoryList = () => {
                 <div className='block items-center gap-3 overflow-hidden'>
                     {
                         loading ? (
-                            categoryLoading.map((el, index) => (
-                                <div className='w-16 h-16 overflow-hidden rounded-full md:w-20 md:h-20 bg-slate-200 animate-pulse' key={"categoryLoading" + index}>
-                                </div>
-                            ))
+                            <div className="flex gap-10 justify-center">
+                                {
+                                    categoryLoading.map((_, index) => (
+                                        <div className='w-16 h-16 overflow-hidden rounded-full md:w-20 md:h-20 bg-slate-200 animate-pulse' key={"categoryLoading" + index}>
+                                        </div>
+                                    ))
+                                }
+                            </div>
                         ) :
                             (
                                 <Slider {...settings}>

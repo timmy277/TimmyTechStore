@@ -111,7 +111,7 @@ const ProductDetail = ({ params }: ProductDetailProps) => {
                 <div className='flex flex-col gap-4 h-96 lg:flex-row-reverse'>
 
                     <div className='h-[300px] w-[300px] lg:h-96 lg:w-96 bg-slate-200 relative p-2'>
-                        <Image src={activeImage} className='object-scale-down w-full h-full mix-blend-multiply' onMouseMove={handleZoomImage} onMouseLeave={handleLeaveImageZoom} alt='img' />
+                        <Image src={activeImage} width={200} height={200} className='object-scale-down w-full h-full mix-blend-multiply' onMouseMove={handleZoomImage} onMouseLeave={handleLeaveImageZoom} alt='img' />
 
                         {/**product zoom */}
                         {
@@ -139,7 +139,7 @@ const ProductDetail = ({ params }: ProductDetailProps) => {
                             loading ? (
                                 <div className='flex h-full gap-2 overflow-scroll lg:flex-col scrollbar-none'>
                                     {
-                                        productImageListLoading.map((el, index) => {
+                                        productImageListLoading.map(( index) => {
                                             return (
                                                 <div className='w-20 h-20 rounded bg-slate-200 animate-pulse' key={"loadingImage" + index}>
                                                 </div>
@@ -149,12 +149,12 @@ const ProductDetail = ({ params }: ProductDetailProps) => {
                                 </div>
 
                             ) : (
-                                <div className='flex h-full gap-2 overflow-scroll lg:flex-col scrollbar-none'>
+                                <div className='flex h-full gap-2 lg:flex-col scrollbar-none'>
                                     {
                                         data?.productImage?.map((imgURL) => {
                                             return (
                                                 <div className='w-20 h-20 p-1 rounded bg-slate-200' key={imgURL}>
-                                                    <Image alt='productImg' src={imgURL} className='object-scale-down w-full h-full cursor-pointer mix-blend-multiply' onMouseEnter={() => handleMouseEnterProduct(imgURL)} onClick={() => handleMouseEnterProduct(imgURL)} />
+                                                    <Image width={200} height={200} alt='productImg' src={imgURL} className='object-scale-down w-full h-full cursor-pointer mix-blend-multiply' onMouseEnter={() => handleMouseEnterProduct(imgURL)} onClick={() => handleMouseEnterProduct(imgURL)} />
                                                 </div>
                                             )
                                         })

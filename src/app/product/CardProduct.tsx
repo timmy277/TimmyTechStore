@@ -54,7 +54,7 @@ const CardProduct = ({ category, heading }: CardProductProps) => {
             <div className=' grid grid-cols-1 gap-10 my-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 place-items-center place-content-center overflow-hidden transition-all md:gap-6' >
                 {loading ?
                     (
-                        loadingList.map((product, index) => {
+                        loadingList.map((_, index) => {
                             return (
                                 <div className='max-w-full h-36 bg-white rounded-sm shadow flex xl:max-w-[20%] lg:max-w-[25%]' key={index}>
                                     <div className='bg-slate-200 h-full p-4 min-w-[120px] md:min-w-[145px] animate-pulse'>

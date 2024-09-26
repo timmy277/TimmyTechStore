@@ -67,8 +67,6 @@ export default function SignIn() {
             console.log(error);
         }
     };
-
-
     return (
         <section className="w-full max-w-full 2lg:px-[20%] lg:px-[20%] md:px-[10%] sm:px-[10%]">
             <div className="max-w-[50rem] bg-white shadow-md mx-auto mt-[2%] px-[8%] pt-[5%] pb-[5%] rounded-[3rem] md:mt-[5%] sm:mt-[5%]">
@@ -119,7 +117,6 @@ export default function SignIn() {
                             <span className='block text-end'>
                                 You don&rsquo;t have an account? <Link href="/auth/SignUp" className='text-blue-500 hover:underline'>Sign Up</Link>
                             </span>
-
                             <Button
                                 type="primary"
                                 htmlType="submit"

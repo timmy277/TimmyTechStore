@@ -2,11 +2,10 @@ import ApiCenter from "@/api/ApiCenter";
 import axios from "axios";
 
 
-
-const fetchCategoryWiseProduct = async(category: string)=>{
+const fetchProductByCategory = async(category: string)=>{
     const response = await axios({
-        method: ApiCenter.categoryWiseProduct.method,
-        url: ApiCenter.categoryWiseProduct.url,
+        method: ApiCenter.getProductByCategory.method,
+        url: ApiCenter.getProductByCategory.url,
         headers: {
             'content-type': 'application/json',
         },
@@ -18,4 +17,4 @@ const fetchCategoryWiseProduct = async(category: string)=>{
     return dataResponse
 }
 
-export default fetchCategoryWiseProduct
+export default fetchProductByCategory

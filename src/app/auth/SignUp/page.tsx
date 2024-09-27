@@ -1,13 +1,12 @@
 "use client"
 
 import { Formik, Form, Field, FormikHelpers, ErrorMessage, FieldProps } from 'formik';
-import * as Yup from 'yup';
 import Link from 'next/link';
 import axios from 'axios';
 import ApiCenter from '@/api/ApiCenter';
 import { useRouter } from 'next/navigation';
 import { Button, Input, notification } from 'antd';
-
+import { signUpSchema } from '../validation-rule';
 
 interface User {
     name: string;
@@ -24,19 +23,6 @@ export default function SignUp() {
         confirmpassword: '',
     };
     const router = useRouter();
-
-    const validationSchema = Yup.object<User>().shape({
-        name: Yup.string().required('Name is required'),
-        email: Yup.string().email('Invalid email').required('Email is required'),
-        password: Yup.string().min(6, 'Password must be at least 6 characters').required('password is required'),
-        confirmpassword: Yup.string()
-            .required('Confirm Password is required')
-            .min(6, 'Password must be at least 6 characters')
-            // .matches(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/, 
-            // 'Password must contain number, uppercase letter and special character')
-            .oneOf([Yup.ref('password')], 'Passwords do not match')
-    });
-
     const handleSignUp = async (values: User, formikHelpers: FormikHelpers<User>) => {
         // event.preventDefault();
         formikHelpers.setSubmitting(true);
@@ -50,6 +36,7 @@ export default function SignUp() {
         });
 
         const dataApi = await dataResponse.data;
+        console.log(dataApi)
         if (dataApi.success) {
             notification.success({
                 message: 'Success',
@@ -59,18 +46,17 @@ export default function SignUp() {
         } else if (dataApi.error) {
             notification.error({
                 message: 'Error',
-                description: 'An error occurred while signing in. Please try again.',
+                description: dataApi.message
             });
         }
     }
-
     return (
         <>
             <section className="w-full max-w-full 2lg:px-[20%] lg:px-[20%] md:px-[10%] sm:px-[10%]">
                 <div className="max-w-[50rem] bg-white shadow-md mx-auto mt-[2%] px-[8%] pt-[5%] pb-[5%] rounded-[3rem] md:mt-[5%] sm:mt-[5%]">
                     <Formik
                         initialValues={initialValues}
-                        validationSchema={validationSchema}
+                        validationSchema={signUpSchema}
                         onSubmit={handleSignUp}
                     >
                         {({ isSubmitting, handleChange }) => (
@@ -78,8 +64,6 @@ export default function SignUp() {
                                 <h1 className="text-5xl leading-[3.75rem] font-semibold font-poppins tracking-[0.004rem] md:text-4xl sm:text-3xl text-center mb-[4rem]">
                                     Sign Up
                                 </h1>
-
-
                                 <div className="mb-4">
                                     <label htmlFor="name">Name</label>
                                     <Field name="name">

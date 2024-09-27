@@ -44,7 +44,7 @@ const ApiCenter = {
         url: `${backendDomain}/api/get-category-product`,
         method: "get",
     },
-    categoryWiseProduct: {
+    getProductByCategory: {
         url: `${backendDomain}/api/category-product`,
         method: "post",
     },
@@ -89,7 +89,7 @@ const ApiCenter = {
         method : 'get'
     },
     allOrder : {
-        url : `${backendDomain}/api/all-order`,
+        url : `${backendDomain}/api/all-orders`,
         method : 'get'
     }
 }

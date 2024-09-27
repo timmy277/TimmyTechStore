@@ -8,6 +8,7 @@ import ApiCenter from '@/api/ApiCenter';import { useRouter } from 'next/navigati
 import { Button, Input, notification } from 'antd';
 import { useContext } from 'react';
 import Context from '@/context';
+import { signInSchema } from '../validation-rule';
 
 
 interface User {
@@ -22,10 +23,6 @@ export default function SignIn() {
     const fetchUserDetails = context?.fetchUserDetails;
     const fetchUserAddToCart = context?.fetchUserAddToCart;
 
-    const validationSchema = Yup.object().shape({
-        email: Yup.string().email('Invalid email').required('Email is required'),
-        password: Yup.string().min(6, 'Password must be at least 6 characters').required('Password is required'),
-    });
 
 
     const handleSignIn = async (values: User) => {
@@ -72,7 +69,7 @@ export default function SignIn() {
             <div className="max-w-[50rem] bg-white shadow-md mx-auto mt-[2%] px-[8%] pt-[5%] pb-[5%] rounded-[3rem] md:mt-[5%] sm:mt-[5%]">
                 <Formik
                     initialValues={{ email: '', password: '' }}
-                    validationSchema={validationSchema}
+                    validationSchema={signInSchema}
                     onSubmit={(values, { setSubmitting }) => {
                         handleSignIn(values);
                         setSubmitting(false);

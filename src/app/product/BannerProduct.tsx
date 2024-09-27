@@ -13,7 +13,6 @@ const BannerProduct = () => {
                         {BannerList.map((data, index) => (
                             <div key={index} className="relative w-full h-[400px]">
                                 <div className="grid grid-cols-1 sm:grid-cols-2 px-8">
-                                    {/* text content section */}
                                     <div className="flex flex-col justify-center gap-4 pt-12 sm:pt-0 text-center sm:text-left order-2 sm:order-1 relative z-10">
                                         <h1 data-aos="zoom-out" data-aos-duration="500" data-aos-once="true" className="text-4xl sm:text-3xl lg:text-4xl font-bold">{data.title}</h1>
                                         <p data-aos="fade-up" data-aos-duration="500" data-aos-delay="100" className="text-sm">{data.description}</p>

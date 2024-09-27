@@ -62,7 +62,6 @@ const AllOrder = () => {
           <p>No Order available</p>
         )
       }
-
       <div className='w-full p-4'>
         {
           data.map((item, index) => {
@@ -107,7 +106,7 @@ const AllOrder = () => {
                           item.shipping_options.map((shipping) => {
                             return (
                               <div key={shipping.shipping_rate} className='ml-1 '>
-                                Shipping Amount : {shipping.shipping_amount}
+                                Shipping Amount : {displayCurrency(shipping.shipping_amount)}
                               </div>
                             )
                           })
@@ -116,7 +115,7 @@ const AllOrder = () => {
                     </div>
                   </div>
                   <div className='ml-auto font-semibold w-fit lg:text-lg'>
-                    Total Amount : {item.totalAmount}
+                    Total Amount : {displayCurrency(item.totalAmount)}
                   </div>
                 </div>
               </div>

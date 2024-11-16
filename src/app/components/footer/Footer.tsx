@@ -85,7 +85,6 @@ export default function Footer() {
         </div>
     )
 }
-
 function backToTop() {
     document.documentElement.scrollTo({
         top: 0,

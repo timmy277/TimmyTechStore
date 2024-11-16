@@ -89,7 +89,7 @@ const ApiCenter = {
         method : 'get'
     },
     allOrder : {
-        url : `${backendDomain}/api/all-order`,
+        url : `${backendDomain}/api/all-orders`,
         method : 'get'
     }
 }

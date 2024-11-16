@@ -27,7 +27,6 @@ const Cart = () => {
 
 
     const fetchData = async () => {
-
         const response = await axios({
             method: ApiCenter.getProductInCart.method,
             url: ApiCenter.getProductInCart.url,
@@ -36,9 +35,7 @@ const Cart = () => {
                 'content-type': 'application/json',
             },
         });
-
         const dataResponse = await response.data;
-
         if (dataResponse.success) {
             setData(dataResponse.data)
         }
@@ -69,9 +66,7 @@ const Cart = () => {
                 quantity: qty + 1
             }
         });
-
         const dataResponse = await response.data;
-
         if (dataResponse.success) {
             fetchData()
         }
@@ -93,10 +88,7 @@ const Cart = () => {
                     quantity: qty - 1
                 }
             });
-
             const dataResponse = await response.data;
-
-
             if (dataResponse.success) {
                 fetchData()
             }
@@ -124,7 +116,6 @@ const Cart = () => {
         }
     }
     const handlePayment = async () => {
-
         const stripePromise = await loadStripe("pk_test_51Q2D9fKbLYXwDhwSJeTGxQ9zbnIury2NgKVlBcWC2sZN7vWNDFrLcWm4bW7gSxsoaYRufpS13b9RKqHBkWHDNsYY00GR0Vc15J")
         // console.log(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY, "pb key")
         const response = await fetch(ApiCenter.payment.url, {
@@ -137,20 +128,16 @@ const Cart = () => {
                 cartItems: data
             })
         })
-
         const responseData = await response.json()
         console.log("payment response", responseData)
-
         if (responseData?.id && stripePromise) {
             stripePromise.redirectToCheckout({ sessionId: responseData.id })
         }
     }
-
     const totalQty = data.reduce((previousValue, currentValue) => previousValue + currentValue.quantity, 0)
     const totalPrice = data.reduce((preve, curr) => preve + (curr.quantity * curr?.productId?.sellingPrice), 0)
     return (
         <div className='container mx-auto'>
-
             <div className='my-3 text-lg text-center'>
                 {
                     data.length === 0 && !loading && (
@@ -158,7 +145,6 @@ const Cart = () => {
                     )
                 }
             </div>
-
             <div className='flex flex-col gap-10 p-4 lg:flex-row lg:justify-between'>
                 {/***view product */}
                 <div className='w-full max-w-3xl'>
@@ -170,7 +156,6 @@ const Cart = () => {
                                     </div>
                                 )
                             })
-
                         ) : (
                             data.map((product) => {
                                 return (
@@ -183,7 +168,6 @@ const Cart = () => {
                                             <div className='absolute right-0 p-2 text-red-600 rounded-full cursor-pointer hover:bg-red-600 hover:text-white' onClick={() => deleteCartProduct(product?._id)}>
                                                 <MdDelete />
                                             </div>
-
                                             <h2 className='text-lg lg:text-xl text-ellipsis line-clamp-1'>{product?.productId?.productName}</h2>
                                             <p className='capitalize text-slate-500'>{product?.productId.category}</p>
                                             <div className='flex items-center justify-between'>
@@ -202,15 +186,12 @@ const Cart = () => {
                         )
                     }
                 </div>
-
-
                 {
                     data[0] && (
                         <div className='w-full max-w-sm mt-5 lg:mt-0'>
                             {
                                 loading ? (
                                     <div className='border h-36 bg-slate-200 border-slate-300 animate-pulse'>
-
                                     </div>
                                 ) : (
                                     <div className='bg-white h-36'>

@@ -8,11 +8,10 @@ import axios from 'axios';
 import ApiCenter from "@/api/ApiCenter";
 import { AppDispatch } from "@/redux/store";
 import { setUserDetails } from "@/redux/userSlice";
-import { NextRouter } from 'next/router';
-
+import { useRouter } from "next/navigation";
 
 // Hàm xử lý logout
-export const handleLogOut = async (dispatch: AppDispatch, router: NextRouter) => {
+export const handleLogOut = async (dispatch: AppDispatch, router: ReturnType<typeof useRouter>) => {
   const fetchData = await axios({
     method: ApiCenter.logOut.method,
     url: ApiCenter.logOut.url,
@@ -36,7 +35,7 @@ export const handleLogOut = async (dispatch: AppDispatch, router: NextRouter) =>
 };
 
 // Hàm tạo menu items
-export const createMenuItems = (user: unknown, dispatch: AppDispatch, router: NextRouter): MenuProps['items'] => {
+export const createMenuItems = (user: unknown, dispatch: AppDispatch, router: ReturnType<typeof useRouter>): MenuProps['items'] => {
   return [
     {
       label: 'Profile',
